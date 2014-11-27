@@ -1,0 +1,11 @@
+{
+  "name": "webpack-slides",
+  "version": "0.0.1",
+  "description": "Slides from webpack uber alles presentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Rossouw <adrian@daemon.co.za>",
+  "license": "MIT"
+}
