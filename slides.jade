@@ -1,0 +1,86 @@
+article
+
+  section(data-bespoke-state='main-slide')
+    h1 Webpack Über Alles 
+    h3 <a href="http://twitter.com/adrianrossouw">@adrianrossouw</a>
+
+  section(data-bespoke-backdrop='orion')
+    h2.bullet Why is 
+    h3.bullet a brief history of module bundling
+        
+
+  section
+    h2 How webpack works.
+    ul
+      li.bullet An external tool builds an AST of your code (like browserify)
+      li.bullet Expanded API in your code to mark up dependencies (like require.js).
+      li.bullet By using both approaches, it gains all the benefits, and none of the drawbacks.
+      li.bullet It is not nearly as configuration heavy to drive as browserify.
+      li.bullet It does not require the severe changes that AMD forces onto your code.
+
+  section
+    h2 It all revolves around require.
+
+    pre
+      code.language-javascript.
+        var slides = require('./slides');
+
+    h3 
+
+  section
+    h2 Dynamic code replacement (hot-loading)
+    a(href='http://gaearon.github.io/react-hot-loader/')
+      img(src='images/hotloader.gif')
+
+
+  section
+      img(src='images/java.png', style='height: 100%')
+
+      br
+
+      h2 RMI
+
+  section
+    img(src='images/dnode.png' style="width: 100%")
+
+  section
+    h2 Dnode
+
+    pre
+      code.language-javascript.
+        var dnode = require('dnode');
+        var server = dnode({
+            replace: function (s, cb) {
+                cb(s.replace(/[aeiou]{2,}/, 'oo').toUpperCase())
+            }
+        });
+        server.listen(5004);
+
+  section
+    h2 Takeaways
+    ul
+      li request/response pattern
+      li built on streams
+      li JSON message format
+      li works from the browser, too!
+      li data must be ready before calling the RPC
+      li no live feed, 'no realtime'
+
+  section(data-bespoke-state='letters')
+    .letter-box(style="font-size: 42")
+      .row
+        .red R
+      .row
+        .red E
+      .row
+        .red S
+      .row
+        .red T
+
+  section
+    h1 Thanks!
+    br
+    h3 <a href="mailto:hello@matteocollina.com">hello@matteocollina.com</a>
+    h3 <a href="http://twitter.com/matteocollina">@matteocollina</a> on Twitter
+    h3 <a href="http://github.com/mcollina">@mcollina</a> on Github
+    h3 <a href="http://www.matteocollina.com">www.matteocollina.com</a>
