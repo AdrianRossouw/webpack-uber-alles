@@ -1,4 +1,22 @@
-# Webpack Uber Alles
+# Webpack Uber Alles presentation.
 
-slides for a webpack presentation created
-for the cape town front end developers group.
+### Installation
+
+```
+npm install -g bower webpack
+make install
+```
+
+### To run locally
+
+```
+webpack-dev-server
+```
+
+### To Deploy
+
+```
+make build;
+make push;
+make deploy
+```

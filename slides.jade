@@ -1,86 +1,126 @@
 article
 
-  section(data-bespoke-state='main-slide')
+  section(data-bespoke-state='main-slide', data-bespoke-backdrop='orion')
     h1 Webpack Über Alles 
     h3 <a href="http://twitter.com/adrianrossouw">@adrianrossouw</a>
 
-  section(data-bespoke-backdrop='orion')
-    h2.bullet Why is 
-    h3.bullet a brief history of module bundling
-        
+  section
+    h2.bullet How webpack works
+    hr
+    ul
+      li.bullet An external tool builds an AST of your code (like browserify).
+      li.bullet Expanded API in your code to mark up dependencies (like require.js).
+      li.bullet It generates one or more bundle files to include via script tags.
 
   section
-    h2 How webpack works.
+    h2.bullet Best of both worlds
+    hr
     ul
-      li.bullet An external tool builds an AST of your code (like browserify)
-      li.bullet Expanded API in your code to mark up dependencies (like require.js).
-      li.bullet By using both approaches, it gains all the benefits, and none of the drawbacks.
       li.bullet It is not nearly as configuration heavy to drive as browserify.
       li.bullet It does not require the severe changes that AMD forces onto your code.
+      li.bullet It can load commonjs, AMD, UMD or Global code seamlessly.
 
   section
-    h2 It all revolves around require.
-
-    pre
-      code.language-javascript.
-        var slides = require('./slides');
-
-    h3 
-
-  section
-    h2 Dynamic code replacement (hot-loading)
-    a(href='http://gaearon.github.io/react-hot-loader/')
-      img(src='images/hotloader.gif')
-
-
-  section
-      img(src='images/java.png', style='height: 100%')
-
-      br
-
-      h2 RMI
-
-  section
-    img(src='images/dnode.png' style="width: 100%")
-
-  section
-    h2 Dnode
-
-    pre
-      code.language-javascript.
-        var dnode = require('dnode');
-        var server = dnode({
-            replace: function (s, cb) {
-                cb(s.replace(/[aeiou]{2,}/, 'oo').toUpperCase())
-            }
-        });
-        server.listen(5004);
-
-  section
-    h2 Takeaways
+    h2.bullet It all starts with require()
+    hr
     ul
-      li request/response pattern
-      li built on streams
-      li JSON message format
-      li works from the browser, too!
-      li data must be ready before calling the RPC
-      li no live feed, 'no realtime'
+      li.bullet Webpack extends the standard require function
+        pre
+          code.language-javascript.
+            require('./slides');
 
-  section(data-bespoke-state='letters')
-    .letter-box(style="font-size: 42")
-      .row
-        .red R
-      .row
-        .red E
-      .row
-        .red S
-      .row
-        .red T
+      li.bullet With the ability to specify inline 'loaders' to use while processing.
+        pre
+          code.language-javascript.
+            // Use coffee-loader to compile CS on the fly.
+            require('coffee!./slides.coffee');
+
+      li.bullet These can also be set up in a config file, so you don't have to modify your code.
+        pre
+          code.language-javascript.
+            // webpack.config.js
+            loaders: [ { test: /\.coffee/, loader: "coffee-loader" } ]
+
+  section(data-bespoke-backdrop='plans')
+    h2.bullet Webpack can bundle more than just javascript!
+    hr
+
+    pre
+      code.language-javascript.
+        require('style!css!less!./style.less')
+
+    h3.bullet This includes :
+    ul
+      li.bullet CSS/SASS/Less.
+      li.bullet HTML / templates.
+      li.bullet Images and Fonts.
 
   section
+    h2 How it bundles these is kind of surprising
+    hr
+    ul
+      li.bullet You only need to include a single bundle.js file via a script tag.
+      li.bullet Everything is transformed to javascript modules.
+      li.bullet ie. requiring a css file will add a style tag to the head.
+      li.bullet Smaller assets can be base64url encoded.
+      li.bullet Larger assets get loaded as files on demand.
+      li.bullet Files will be copied to the destination with a content hash as filename.
+
+  section
+    h2 This all means that
+    hr
+    ul
+      li.bullet Fewer HTTP request needed to render a page.
+      li.bullet Shorter loading times for end-users.
+      li.bullet Hash based filename means you can effectively cache the assets.
+      li.bullet Faster deploys, since you only need to upload new files.
+      li.bullet You finally have a single pipeline for all your assets too.
+      li.bullet This means grunt, gulp and yeoman become mostly unneccessary.
+
+  section
+    h2 The tooling is really great too!
+    hr
+    ul
+      li.bullet There are loaders for everything.
+      li.bullet They expand node's module resolution to everything.
+      li.bullet The 'watch' mode just works.
+      li.bullet Minification etc just requires you to use webpack -p
+      li.bullet webpack-dev-server works great for testing SPA's
+      li.bullet use webpack-dev-middleware if you have a server-side aspect.
+
+  section(data-bespoke-backdrop='earth')
+    h1 advanced features
+
+  section
+    h2 Dynamic code replacement
+    hr
+    a(href='http://gaearon.github.io/react-hot-loader/')
+      img(src=require('./images/hotloader.gif'))
+
+  section
+    h2 Segment into multiple chunks
+
+  section
+    h2 Common module detection and deduplication
+
+  section
+    h2 Multiple entry points
+
+  section
+    h2 Long-term caching
+
+  section(data-bespoke-backdrop='gears')
+    h2 To learn more ...
+    hr
+    ul
+      li Start with Pete Hunt's excellent <a href='http://github.com/petehunt/webpack-howto'>webpack-howto</a>.
+      li Read through the <a href='http://github.com/petehunt/webpack-howto'>Webpack</a> docs.
+      li This presentation also built with webpack: <a href='http://github.com/adrianrossouw/webpack-uber-alles'>source</a>.
+
+  section(data-bespoke-backdrop='orion')
     h1 Thanks!
     br
-    h3 <a href="mailto:hello@matteocollina.com">hello@matteocollina.com</a>
-    h3 <a href="http://twitter.com/matteocollina">@matteocollina</a> on Twitter
-    h3 <a href="http://github.com/mcollina">@mcollina</a> on Github
-    h3 <a href="http://www.matteocollina.com">www.matteocollina.com</a>
+    h3 <a href="mailto:hello@daemon.co.za">hello@daemon.co.za</a>
+    h3 <a href="http://twitter.com/adrianrossouw">@adrianrossouw</a> on Twitter
+    h3 <a href="http://github.com/adrianrossouw">@adrianrossouw</a> on Github
+    h3 <a href="http://daemon.co.za">daemon.co.za</a>

@@ -1,7 +1,7 @@
 require('./slides.less');
 
 var child = document.createElement("div");
-child.innerHTML = require('./slides.jade');
+child.innerHTML = require('./slides.jade')();
 document.body.appendChild(child);
 
 var bespoke = require('bespoke');
@@ -26,3 +26,5 @@ bespoke.from('article', [
   keys(),
   bullets('li, .bullet')
 ]);
+
+require('prism');
