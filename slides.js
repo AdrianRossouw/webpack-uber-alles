@@ -16,7 +16,7 @@ var touch = require('bespoke-touch');
 var nebula = require('bespoke-theme-nebula');
 
 bespoke.from('article', [
-  scale(),
+  scale('zoom'),
   progress(),
   hash(),
   state(),
