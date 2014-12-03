@@ -5,7 +5,6 @@ module.exports = {
   entry: "./slides.js",
   output: {
     path: __dirname + '/dist',
-    publicPath: "/dist/",
     filename: "bundle.js"
   },
   module: {
